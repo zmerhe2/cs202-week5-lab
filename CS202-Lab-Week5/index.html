@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <script src="script.js"></script>
+
+    <form>
+    Make:<br>
+    <input id="make" name="make" type="text" placeholder="Make"><br>
+    Color:<br>
+    <input id="color" name="color" type="text" placeholder="Color"><br>
+    Plate:<br>
+    <input id="plate" name="pate" type="text" placeholder="Plate"><br>
+    State:<br>
+    <input id="state" name="state" type="text" placeholder="State"><br>
+
+    <button type="button">Click me</button>
+    </form>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script>
+
+      // This example displays a marker at the center of Australia.
+      // When the user clicks the marker, an info window opens.
+
+    </script>
+
+    <script>
+      function towedSearch() {
+        var endpoint = "https://data.cityofchicago.org/resource/rp42-fxjt.json";
+
+        var url = endpoint + "?make=" + $("#make").val() + "?color" + $("#color").val() + "?plate" + $("#plate").val() + "?state=" + $("#state").val();
+
+        //url += "&results=" + $("#results").val();
+
+        $.ajax({
+            url: url, //"https://data.cityofchicago.org/resource/rp42-fxjt.json",
+            type: "GET",
+            data: {
+              "$limit" : 5000,
+              "$$app_token" : "3d63ojRByNoTzZ8tS7FWqXLDV"
+            }
+          }).done(function(data) {
+            alert("Retrieved " + data.length + "records from the dataset!");
+            console.log(data);
+          });
+
+          $.each(data, function(i,v) {
+            
+          
+          });
+
+
+  
+      };
+
+      </script>
+    <script>
+  
+    $("button").on("click", towedSearch);
+
+
+  </script>
+
+    
+
+  </body>
+</html>
+
+
+<!--Body
+      Form                  Loop
+                            construct html
+      <Div id=results>      $(#results).append(html)
+      </div>
+      -->
